@@ -29,4 +29,5 @@ plt.xlim(2000, 20000)
 plt.ylim(0, 20000)
 plt.legend(loc = 1, prop = {'size':15})
 plt.show
-plt.savefig('C:/Users/nosquest17/Desktop/Sujong/daily_works/20200401_post_processing_document/raw_data')
+#plt.savefig('C:/Users/nosquest17/Desktop/Sujong/daily_works/20200401_post_processing_document/raw_data')
+plt.savefig('C:/Users/nosquest17/Desktop/figure')
