@@ -1,5 +1,6 @@
 #%%
 import matplotlib.pyplot as plt
+import matplotlib.patches as mpatches
 import csv
 import numpy as np
 import math
@@ -13,8 +14,8 @@ err_max = []
 err_min = []
 
 origin_path = 'C:/Users/nosquest17/Desktop/Sujong/daily_works/20200602_GC_cyto_peaks/'
-file_name = 'GC_v1_cyto_peak_3'
-save_fig = 0
+file_name = 'GC_v2_cyto_peak_1'
+save_fig = 1
 
 with open(origin_path+file_name+'.csv', 'rt', encoding='UTF8') as csvfile:
     plots = csv.reader(csvfile, delimiter = ',')
@@ -59,33 +60,35 @@ print(err_min_value)
 
 fig = plt.figure(figsize = (15,5))
 
-### overlap two graphs
-plt.bar(x1, err1, color = 'b', alpha = 0.5, width = 0.3)
-plt.bar(x1, err2, color = 'r', alpha = 0.5, width = 0.3)
-plt.xticks(rotation = 90)
+# ### overlap two graphs
+# plt.bar(x1, err1, color = 'b', alpha = 0.5, width = 0.3)
+# plt.bar(x1, err2, color = 'r', alpha = 0.5, width = 0.3)
+# plt.xticks(rotation = 90)
 
 ### divide two graphs
-# r1 = np.arange(len(x1))
-# r2 = [x + 0.3 for x in r1]
-# r3 = [x + 0.3 for x in r2]
-# plt.bar(r1, err1, color = 'b', alpha = 0.5, width = 0.3)
-# plt.bar(r2, err2, color = 'r', alpha = 0.5, width = 0.3)
-# plt.xticks([r + 0.15 for r in range(len(x1))], x1, rotation=90)
+r1 = np.arange(len(x1))
+r2 = [x + 0.3 for x in r1]
+r3 = [x + 0.3 for x in r2]
+plt.bar(r1, err1, color = 'r', alpha = 0.7, width = 0.3)
+plt.bar(r2, err2, color = 'b', alpha = 0.7, width = 0.3)
+plt.xticks([r + 0.15 for r in range(len(x1))], x1, rotation=90)
 
 
 plt.xlabel('spot', fontsize = 12)
 plt.ylabel('Error(ppm)', fontsize = 12)
-plt.yticks(np.arange(err_min_value - 50, err_max_value + 50, step = 100))
+plt.yticks(np.arange(err_min_value, err_max_value + 100, step = 100))
 plt.axhline(y = 0, linewidth = 0.5, color = 'black')
 try_index = file_name.index("_", 11)
-plt.title('Cytochrome Error(ppm) Test try '+file_name[try_index+1:]+' using GC '+ file_name[3:5], fontsize = 15)
+plt.title('Cytochrome C Error(ppm) Test try '+file_name[try_index+1:]+' using GC '+ file_name[3:5], fontsize = 15)
 plt.xlim(0, len(x1))
 plt.ylim(err_min_value - 50, err_max_value + 50)
-props = dict(boxstyle = 'round', facecolor = 'yellow', alpha = 1)
-#plt.text(len(x1)-12, y1_min-0.005,'max - min = '+str(y_sub)+'ns', fontsize = 16, fontweight = 'bold', bbox = props)
+patch1 = mpatches.Patch(color='r', alpha = 0.7,linewidth= 0.3, label = "Cytochrome C [M+2H]")
+patch2 = mpatches.Patch(color='b', alpha = 0.7, linewidth=0.3, label = "Cytochrome C")
+plt.legend(handles = [patch1, patch2], prop={'size':8})
 if save_fig == True:
     plt.savefig(origin_path+file_name)
 plt.show()
+
 
 
 
