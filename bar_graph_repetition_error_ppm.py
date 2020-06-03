@@ -15,7 +15,7 @@ err_min = []
 
 origin_path = 'C:/Users/nosquest17/Desktop/Sujong/daily_works/20200602_GC_cyto_peaks/'
 file_name = 'GC_v2_cyto_peak_1'
-save_fig = 1
+save_fig = 0
 
 with open(origin_path+file_name+'.csv', 'rt', encoding='UTF8') as csvfile:
     plots = csv.reader(csvfile, delimiter = ',')

@@ -8,7 +8,7 @@ y1 = []
 
 origin_path = 'C:/Users/nosquest17/Desktop/Sujong/daily_works/20200601_GC_6402_Pico_flatness_repetition/'
 file_name = 'GC_v2_flatness_6402_11'
-save_fig = 1
+save_fig = 0
 
 with open(origin_path+file_name+'.csv', 'rt', encoding='UTF8') as csvfile:
     plots = csv.reader(csvfile, delimiter = ',')
