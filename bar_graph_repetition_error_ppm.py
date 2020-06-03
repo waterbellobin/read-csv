@@ -59,11 +59,22 @@ print(err_min_value)
 
 fig = plt.figure(figsize = (15,5))
 
+### overlap two graphs
 plt.bar(x1, err1, color = 'b', alpha = 0.5, width = 0.3)
 plt.bar(x1, err2, color = 'r', alpha = 0.5, width = 0.3)
+plt.xticks(rotation = 90)
+
+### divide two graphs
+# r1 = np.arange(len(x1))
+# r2 = [x + 0.3 for x in r1]
+# r3 = [x + 0.3 for x in r2]
+# plt.bar(r1, err1, color = 'b', alpha = 0.5, width = 0.3)
+# plt.bar(r2, err2, color = 'r', alpha = 0.5, width = 0.3)
+# plt.xticks([r + 0.15 for r in range(len(x1))], x1, rotation=90)
+
+
 plt.xlabel('spot', fontsize = 12)
 plt.ylabel('Error(ppm)', fontsize = 12)
-plt.xticks(rotation=90)
 plt.yticks(np.arange(err_min_value - 50, err_max_value + 50, step = 100))
 plt.axhline(y = 0, linewidth = 0.5, color = 'black')
 try_index = file_name.index("_", 11)
