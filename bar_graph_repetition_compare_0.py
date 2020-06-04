@@ -9,9 +9,9 @@ x1 = []
 y1 = []
 y2 = []
 
-origin_path = 'C:/Users/nosquest17/Desktop/Sujong/daily_works/20200601_GC_3203_Pico_flatness_repetition/'
-file_name = 'GC_v2_flatness_3203_10'
-save_fig = 0
+origin_path = 'C:/Users/nosquest17/Desktop/Sujong/daily_works/20200601_GC_6402_Pico_flatness_repetition/'
+file_name = 'GC_v1_flatness_6402_10'
+save_fig = 1
 
 with open(origin_path+file_name+'.csv', 'rt', encoding='UTF8') as csvfile:
     plots = csv.reader(csvfile, delimiter = ',')
@@ -69,9 +69,10 @@ file_name[15:19]+' PicoScope', fontsize = 15)
 plt.xlim(0, len(x1))
 plt.ylim((y1_min - 0.011) * 1000, (y1_max + 0.011)* 1000)
 props = dict(boxstyle = 'round', facecolor = 'yellow', alpha = 1)
-plt.text(len(x1)-15, 1000*(y1_min - 0.008),'max - min = '+str(y_sub)+'ns', fontsize = 20, fontweight = 'bold', bbox = props)
+plt.text(len(x1)-15, 1000*(y1_min - 0.008)+1.5,'median = '+str(round(y_med, 3))+'μs', fontsize = 20, fontweight = 'bold', bbox = props)
+plt.text(len(x1)-15, 1000*(y1_min - 0.008)-1.5,'max - min = '+str(y_sub)+'ns', fontsize = 20, fontweight = 'bold', bbox = props)
 if save_fig == True:
-    plt.savefig(origin_path+file_name+'_zero_arrange')
+    plt.savefig(origin_path+file_name+'_zero_arrange_with_median')
 plt.show()
 
 
