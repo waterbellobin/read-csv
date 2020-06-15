@@ -37,25 +37,25 @@ fig = plt.figure(figsize = (15,5))
 r1 = np.arange(len(x1))
 r2 = [x - 0.3 for x in r1]
 r3 = [x + 0.3 for x in r1]
-plt.bar(r1, y1, color = 'b', alpha = 0.7, width = 0.4)
+plt.bar(r1, y3, color = 'b', alpha = 0.7, width = 0.4)
 # plt.bar(r2, y2, color = 'b', alpha = 0.7, width = 0.2)
 # plt.bar(r3, y3, color = 'g', alpha = 0.7, width = 0.2)
 plt.xticks([r + 0.15 for r in range(len(x1))], x1, rotation=90, fontsize = 15)
 
 plt.xlabel('spot', fontsize = 20)
 plt.ylabel("Height from A0 (μm)", fontsize = 20)
-plt.yticks(np.arange(-50, 151, step = 50))
+plt.yticks(np.arange(-50, 201, step = 50), fontsize = 15)
 plt.axhline(y = 0, linewidth = 0.5, color = 'black')
 try_index = file_name.index("_", 11)
 # plt.title('Cytochrome C Error(ppm) Test try '+file_name[try_index+1:]+' using GC '+ file_name[3:5], fontsize = 15)
 plt.title('Height measurement', fontsize = 20)
 plt.xlim(0, len(x1))
-plt.ylim(-60, 160)
+plt.ylim(-60, 210)
 # patch1 = mpatches.Patch(color='r', alpha = 0.7,linewidth= 0.3, label = "Cytochrome C [M+2H]")
-patch2 = mpatches.Patch(color='b', alpha = 0.7, linewidth=0.3, label = "try 1")
+patch2 = mpatches.Patch(color='b', alpha = 0.7, linewidth=0.3, label = "try 3")
 plt.legend(handles = [patch2], prop={'size':12})
 if save_fig == True:
-    plt.savefig(origin_path+file_name)
+    plt.savefig(origin_path+'test_3')
 plt.show()
 
 
