@@ -77,60 +77,15 @@ for file in files:
         cyto_cal[i] = mz[i] - cyto_ref
         myo1_cal[i] = mz[i] - myo1_ref
     
-    ams1_err_abs = min(np.abs(ams1_cal))
-    ams2_err_abs = min(np.abs(ams2_cal))
-    ams3_err_abs = min(np.abs(ams3_cal))
-    ams4_err_abs = min(np.abs(ams4_cal))
-    ams5_err_abs = min(np.abs(ams5_cal))
-    myo2_err_abs = min(np.abs(myo2_cal))
-    ams6_err_abs = min(np.abs(ams6_cal))
-    cyto_err_abs = min(np.abs(cyto_cal))
-    myo1_err_abs = min(np.abs(myo1_cal))
-    
-    if ams1_err_abs == min(ams1_cal):
-        ams1_err = ams1_err_abs
-    else:
-        ams1_err = ams1_err_abs * (-1)
-
-    if ams2_err_abs == min(ams2_cal):
-        ams2_err = ams2_err_abs
-    else:
-        ams2_err = ams2_err_abs * (-1)
-
-    if ams3_err_abs == min(ams3_cal):
-        ams3_err = ams3_err_abs
-    else:
-        ams3_err = ams3_err_abs * (-1)
-
-    if ams4_err_abs == min(ams4_cal):
-        ams4_err = ams4_err_abs
-    else:
-        ams4_err = ams4_err_abs * (-1)
-
-    if ams5_err_abs == min(ams5_cal):
-        ams5_err = ams5_err_abs
-    else:
-        ams5_err = ams5_err_abs * (-1)
-
-    if myo2_err_abs == min(myo2_cal):
-        myo2_err = myo2_err_abs
-    else:
-        myo2_err = myo2_err_abs * (-1)
-
-    if ams6_err_abs == min(ams6_cal):
-        ams6_err = ams6_err_abs
-    else:
-        ams6_err = ams6_err_abs * (-1)
-
-    if cyto_err_abs == min(cyto_cal):
-        cyto_err = cyto_err_abs
-    else:
-        cyto_err = cyto_err_abs * (-1)
-
-    if myo1_err_abs == min(myo1_cal):
-        myo1_err = myo1_err_abs
-    else:
-        myo1_err = myo1_err_abs * (-1)
+    ams1_err = min(ams1_cal, key=abs)
+    ams2_err = min(ams2_cal, key=abs)
+    ams3_err = min(ams3_cal, key=abs)
+    ams4_err = min(ams4_cal, key=abs)
+    ams5_err = min(ams5_cal, key=abs)
+    myo2_err = min(myo2_cal, key=abs)
+    ams6_err = min(ams6_cal, key=abs)
+    cyto_err = min(cyto_cal, key=abs)
+    myo1_err = min(myo1_cal, key=abs)
 
     print(ams1_err/ams1_ref*1000000)
     print(ams2_err/ams2_ref*1000000)
@@ -141,6 +96,9 @@ for file in files:
     print(ams6_err/ams6_ref*1000000)
     print(cyto_err/cyto_ref*1000000)
     print(myo1_err/myo1_ref*1000000)
+    print('')
+
+
     # index_1 = file.index("_")
     # index_2 = file.index("_", index_1+1)
     
