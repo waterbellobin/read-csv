@@ -4,16 +4,6 @@ import matplotlib.pyplot as plt
 import csv
 import numpy as np
 
-intensity = []
-intensity_sec = []
-intensity_sec_total = []
-cyto2 = []
-cyto = []
-inten_total = []
-cyto2_total = []
-cyto_total = []
-alphabet = []
-
 ams1_ref = 3637.8000
 ams2_ref = 4364.9200
 ams3_ref = 5381.4000
@@ -24,28 +14,32 @@ ams6_ref = 9740.8000
 cyto_ref = 12361.1000
 myo1_ref = 16952.3000
 
-ams1, ams2, ams3, ams4, ams5, ams6, myo2, myo1, cyto = [],[],[],[],[],[],[],[],[]
+ams1, ams2, ams3, ams4, ams5, ams6, myo2, myo1, cyto = \
+    ['AMS 1'],['AMS 2'],['AMS 3'],['AMS 4'],['AMS 5'],['[Myoglobin+2H+]2+'],['AMS 6'],\
+        ['[CytochromeC+H+]+'],['[Myoglobin+H+]+']
 ams1_cal, ams2_cal, ams3_cal, ams4_cal, ams5_cal, ams6_cal, myo2_cal, myo1_cal, cyto_cal \
     = [],[],[],[],[],[],[],[],[]
 mz = []
+alphabet = ['']
 
 i = 0
-path = 'C:/Users/nosquest17/Desktop/Sujong/daily_works/20200617_AMS_error_ppm/20200617_AMS_error_ppm_ex/'
-files = os.listdir(path)
+path = 'C:/Users/nosquest17/Desktop/Sujong/daily_works/'
+folder = '20200617_AMS_error_ppm/20200617_AMS_error_ppm_ex/'
+files = os.listdir(path+folder)
 
 for file in files:
     #print(file)
-    with open(path+file, 'rt', encoding='UTF8') as csvfile:
+    with open(path+folder+file, 'rt', encoding='UTF8') as csvfile:
         plots = csv.reader(csvfile, delimiter=',')
-        ams1.clear()
-        ams2.clear()
-        ams3.clear()
-        ams4.clear()
-        ams5.clear()
-        myo2.clear()
-        ams6.clear()
-        cyto.clear()
-        myo1.clear()
+        # ams1.clear()
+        # ams2.clear()
+        # ams3.clear()
+        # ams4.clear()
+        # ams5.clear()
+        # myo2.clear()
+        # ams6.clear()
+        # cyto.clear()
+        # myo1.clear()
         mz.clear()
         ams1_cal.clear()
         ams2_cal.clear()
@@ -87,46 +81,41 @@ for file in files:
     cyto_err = min(cyto_cal, key=abs)
     myo1_err = min(myo1_cal, key=abs)
 
-    print(ams1_err/ams1_ref*1000000)
-    print(ams2_err/ams2_ref*1000000)
-    print(ams3_err/ams3_ref*1000000)
-    print(ams4_err/ams4_ref*1000000)
-    print(ams5_err/ams5_ref*1000000)
-    print(myo2_err/myo2_ref*1000000)
-    print(ams6_err/ams6_ref*1000000)
-    print(cyto_err/cyto_ref*1000000)
-    print(myo1_err/myo1_ref*1000000)
+    index_1 = file.index("_")
+    index_2 = file.index("_", index_1+1)
+    
+    print(file[index_1+1:index_2])
+    alphabet.append(file[index_1+1:index_2])
+
+    # print(ams1_err/ams1_ref*1000000)
+    # print(ams2_err/ams2_ref*1000000)
+    # print(ams3_err/ams3_ref*1000000)
+    # print(ams4_err/ams4_ref*1000000)
+    # print(ams5_err/ams5_ref*1000000)
+    # print(myo2_err/myo2_ref*1000000)
+    # print(ams6_err/ams6_ref*1000000)
+    # print(cyto_err/cyto_ref*1000000)
+    # print(myo1_err/myo1_ref*1000000)
+
+    ams1.append(ams1_err/ams1_ref*1000000)
+    ams2.append(ams2_err/ams2_ref*1000000)
+    ams3.append(ams3_err/ams3_ref*1000000)
+    ams4.append(ams4_err/ams4_ref*1000000)
+    ams5.append(ams5_err/ams5_ref*1000000)
+    myo2.append(myo2_err/myo2_ref*1000000)
+    ams6.append(ams6_err/ams6_ref*1000000)
+    cyto.append(cyto_err/cyto_ref*1000000)
+    myo1.append(myo1_err/myo1_ref*1000000)
+
+    print(alphabet)
+    print(ams1)
     print('')
 
+file_index_1 = folder.index("/")
+file_index_2 = folder.index("/", file_index_1+1)
+print(folder[file_index_1+1:file_index_2])
 
-    # index_1 = file.index("_")
-    # index_2 = file.index("_", index_1+1)
-    
-    # print(file[index_1+1:index_2])
-    # alphabet.append(file[index_1+1:index_2])
-    # max_i = max(intensity)
-    # print(max_i)
-    
-
-
-
-#     for n in range(len(mz)):
-#         if intensity[n] == max_i:
-#             inten_total.append(intensity[n])
-#             cyto2_total.append(cyto2[n])
-        
-#         if cyto2[n] >= 12000:
-#             intensity_sec.append(intensity[n])
-#             cyto.append(cyto2[n])
-    
-#     max_s = max(intensity_sec)
-#     for m in range(len(intensity_sec)):
-#         if intensity_sec[m] == max_s:
-#             intensity_sec_total.append(intensity_sec[m])
-#             cyto_total.append(cyto[m])
-#     print(intensity_sec)
-
-# with open(path[0:70]+path[70:-1]+'.csv', mode = 'w', newline='', encoding='UTF8') as single_data_writer:
+# with open(path1+path2[0:70]+path[70:-1]+'.csv', mode = 'w', newline='', encoding='UTF8') as single_data_writer:
 #     total_data = csv.writer(single_data_writer, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
 #     total_data.writerow(['Spot', 'max intensity', 'Cyto 2+', 'second inten', 'Cyto C'])
 #     for j in range(len(cyto2_total)):
