@@ -31,9 +31,11 @@ def natural_keys(text):
 
 i = 0
 path = 'C:/Users/nosquest17/Desktop/Sujong/daily_works/'
-folder = '20200617_AMS_whole_error_ppm/20200617_1-1/'
+folder = '20200617_AMS_whole_error_ppm/20200617_2-3/'
 files = os.listdir(path+folder)
 files.sort(key=natural_keys)
+
+save_csv = True
 
 for file in files:
     #print(file)
@@ -123,18 +125,19 @@ file_index_2 = folder.index("/", file_index_1+1)
 print(folder[0:file_index_1+1])
 print(folder[file_index_1+1:file_index_2])
 
-with open(path+folder[0:file_index_1+1]+folder[file_index_1+1:file_index_2]+'.csv', mode = 'w', newline='', encoding='UTF8') as single_data_writer:
-    total_data = csv.writer(single_data_writer, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
-    total_data.writerow(alphabet)
-    total_data.writerow(ams1)
-    total_data.writerow(ams2)
-    total_data.writerow(ams3)
-    total_data.writerow(ams4)
-    total_data.writerow(ams5)
-    total_data.writerow(myo2)
-    total_data.writerow(ams6)
-    total_data.writerow(cyto)
-    total_data.writerow(myo1)
+if save_csv == True:
+    with open(path+folder[0:file_index_1+1]+folder[file_index_1+1:file_index_2]+'.csv', mode = 'w', newline='', encoding='UTF8') as single_data_writer:
+        total_data = csv.writer(single_data_writer, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+        total_data.writerow(alphabet)
+        total_data.writerow(ams1)
+        total_data.writerow(ams2)
+        total_data.writerow(ams3)
+        total_data.writerow(ams4)
+        total_data.writerow(ams5)
+        total_data.writerow(myo2)
+        total_data.writerow(ams6)
+        total_data.writerow(cyto)
+        total_data.writerow(myo1)
     # for j in range(len(cyto2_total)):
     #     total_data.writerow([alphabet[j], inten_total[j], cyto2_total[j], intensity_sec_total[j], cyto_total[j]])
 
