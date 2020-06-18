@@ -2,6 +2,7 @@
 import os
 import matplotlib.pyplot as plt
 import csv
+import numpy as np
 
 intensity = []
 intensity_sec = []
@@ -67,13 +68,79 @@ for file in files:
     for i in range(len(mz)):
         mz[i] = float(mz[i])
         ams1_cal[i] = mz[i] - ams1_ref
+        ams2_cal[i] = mz[i] - ams2_ref
+        ams3_cal[i] = mz[i] - ams3_ref
+        ams4_cal[i] = mz[i] - ams4_ref
+        ams5_cal[i] = mz[i] - ams5_ref
+        myo2_cal[i] = mz[i] - myo2_ref
+        ams6_cal[i] = mz[i] - ams6_ref
+        cyto_cal[i] = mz[i] - cyto_ref
         myo1_cal[i] = mz[i] - myo1_ref
     
-    print(ams1_cal)
-    print(myo1_cal)
-    print(mz)
-    print(myo1_cal[-1])
-    print(myo1_cal[-1]/myo1_ref*1000000)
+    ams1_err_abs = min(np.abs(ams1_cal))
+    ams2_err_abs = min(np.abs(ams2_cal))
+    ams3_err_abs = min(np.abs(ams3_cal))
+    ams4_err_abs = min(np.abs(ams4_cal))
+    ams5_err_abs = min(np.abs(ams5_cal))
+    myo2_err_abs = min(np.abs(myo2_cal))
+    ams6_err_abs = min(np.abs(ams6_cal))
+    cyto_err_abs = min(np.abs(cyto_cal))
+    myo1_err_abs = min(np.abs(myo1_cal))
+    
+    if ams1_err_abs == min(ams1_cal):
+        ams1_err = ams1_err_abs
+    else:
+        ams1_err = ams1_err_abs * (-1)
+
+    if ams2_err_abs == min(ams2_cal):
+        ams2_err = ams2_err_abs
+    else:
+        ams2_err = ams2_err_abs * (-1)
+
+    if ams3_err_abs == min(ams3_cal):
+        ams3_err = ams3_err_abs
+    else:
+        ams3_err = ams3_err_abs * (-1)
+
+    if ams4_err_abs == min(ams4_cal):
+        ams4_err = ams4_err_abs
+    else:
+        ams4_err = ams4_err_abs * (-1)
+
+    if ams5_err_abs == min(ams5_cal):
+        ams5_err = ams5_err_abs
+    else:
+        ams5_err = ams5_err_abs * (-1)
+
+    if myo2_err_abs == min(myo2_cal):
+        myo2_err = myo2_err_abs
+    else:
+        myo2_err = myo2_err_abs * (-1)
+
+    if ams6_err_abs == min(ams6_cal):
+        ams6_err = ams6_err_abs
+    else:
+        ams6_err = ams6_err_abs * (-1)
+
+    if cyto_err_abs == min(cyto_cal):
+        cyto_err = cyto_err_abs
+    else:
+        cyto_err = cyto_err_abs * (-1)
+
+    if myo1_err_abs == min(myo1_cal):
+        myo1_err = myo1_err_abs
+    else:
+        myo1_err = myo1_err_abs * (-1)
+
+    print(ams1_err/ams1_ref*1000000)
+    print(ams2_err/ams2_ref*1000000)
+    print(ams3_err/ams3_ref*1000000)
+    print(ams4_err/ams4_ref*1000000)
+    print(ams5_err/ams5_ref*1000000)
+    print(myo2_err/myo2_ref*1000000)
+    print(ams6_err/ams6_ref*1000000)
+    print(cyto_err/cyto_ref*1000000)
+    print(myo1_err/myo1_ref*1000000)
     # index_1 = file.index("_")
     # index_2 = file.index("_", index_1+1)
     
