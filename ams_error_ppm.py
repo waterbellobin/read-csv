@@ -1,5 +1,6 @@
 #%%
 import os
+import re
 import matplotlib.pyplot as plt
 import csv
 import numpy as np
@@ -22,10 +23,17 @@ ams1_cal, ams2_cal, ams3_cal, ams4_cal, ams5_cal, ams6_cal, myo2_cal, myo1_cal, 
 mz = []
 alphabet = ['']
 
+def atoi(text):
+    return int(text) if text.isdigit() else text
+
+def natural_keys(text):
+    return [atoi(c) for c in re.split(r'(\d+)', text)]
+
 i = 0
 path = 'C:/Users/nosquest17/Desktop/Sujong/daily_works/'
 folder = '20200617_AMS_whole_error_ppm/20200617_1-1/'
 files = os.listdir(path+folder)
+files.sort(key=natural_keys)
 
 for file in files:
     #print(file)
