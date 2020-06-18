@@ -14,7 +14,7 @@ ams6_ref = 9740.8000
 cyto_ref = 12361.1000
 myo1_ref = 16952.3000
 
-ams1, ams2, ams3, ams4, ams5, ams6, myo2, myo1, cyto = \
+ams1, ams2, ams3, ams4, ams5, myo2, ams6, cyto, myo1 = \
     ['AMS 1'],['AMS 2'],['AMS 3'],['AMS 4'],['AMS 5'],['[Myoglobin+2H+]2+'],['AMS 6'],\
         ['[CytochromeC+H+]+'],['[Myoglobin+H+]+']
 ams1_cal, ams2_cal, ams3_cal, ams4_cal, ams5_cal, ams6_cal, myo2_cal, myo1_cal, cyto_cal \
@@ -24,7 +24,7 @@ alphabet = ['']
 
 i = 0
 path = 'C:/Users/nosquest17/Desktop/Sujong/daily_works/'
-folder = '20200617_AMS_error_ppm/20200617_AMS_error_ppm_ex/'
+folder = '20200617_AMS_whole_error_ppm/20200617_1-1/'
 files = os.listdir(path+folder)
 
 for file in files:
@@ -107,18 +107,27 @@ for file in files:
     cyto.append(cyto_err/cyto_ref*1000000)
     myo1.append(myo1_err/myo1_ref*1000000)
 
-    print(alphabet)
-    print(ams1)
     print('')
 
 file_index_1 = folder.index("/")
 file_index_2 = folder.index("/", file_index_1+1)
+
+print(folder[0:file_index_1+1])
 print(folder[file_index_1+1:file_index_2])
 
-# with open(path1+path2[0:70]+path[70:-1]+'.csv', mode = 'w', newline='', encoding='UTF8') as single_data_writer:
-#     total_data = csv.writer(single_data_writer, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
-#     total_data.writerow(['Spot', 'max intensity', 'Cyto 2+', 'second inten', 'Cyto C'])
-#     for j in range(len(cyto2_total)):
-#         total_data.writerow([alphabet[j], inten_total[j], cyto2_total[j], intensity_sec_total[j], cyto_total[j]])
+with open(path+folder[0:file_index_1+1]+folder[file_index_1+1:file_index_2]+'.csv', mode = 'w', newline='', encoding='UTF8') as single_data_writer:
+    total_data = csv.writer(single_data_writer, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+    total_data.writerow(alphabet)
+    total_data.writerow(ams1)
+    total_data.writerow(ams2)
+    total_data.writerow(ams3)
+    total_data.writerow(ams4)
+    total_data.writerow(ams5)
+    total_data.writerow(myo2)
+    total_data.writerow(ams6)
+    total_data.writerow(cyto)
+    total_data.writerow(myo1)
+    # for j in range(len(cyto2_total)):
+    #     total_data.writerow([alphabet[j], inten_total[j], cyto2_total[j], intensity_sec_total[j], cyto_total[j]])
 
 # %%
