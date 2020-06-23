@@ -31,7 +31,7 @@ def natural_keys(text):
 
 i = 0
 path = 'C:/Users/nosquest17/Desktop/Sujong/daily_works/'
-folder = '20200617_AMS_whole_error_ppm/20200617_2-3/'
+folder = '20200619_AMS_error_ppm_micro_score/200619_AMS_4_peak/'
 files = os.listdir(path+folder)
 files.sort(key=natural_keys)
 
