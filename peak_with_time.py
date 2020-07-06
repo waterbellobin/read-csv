@@ -1,3 +1,4 @@
+#%%
 import os
 import matplotlib.pyplot as plt
 import csv
@@ -8,13 +9,14 @@ inten_total = []
 time_total = []
 alphabet = []
 i = 0
-path = 'C:/Users/nosquest17/Desktop/Sujong/daily_works/20200528_GC_v1_flatness_test_Red_Ink/'
+path = 'C:/Users/nosquest17/Desktop/Sujong/daily_works/20200707_GC_v2_Red_ink_flatness/'
+folder = '20200706_Red_Ink_1/'
 
-files = os.listdir(path)
+files = os.listdir(path+folder)
 
 for file in files:
     #print(file)
-    with open(path+file, 'rt', encoding='UTF8') as csvfile:
+    with open(path+folder+file, 'rt', encoding='UTF8') as csvfile:
         plots = csv.reader(csvfile, delimiter=',')
         intensity.clear()
         time.clear()
@@ -46,3 +48,5 @@ with open(path+'example.csv', mode = 'w', newline='', encoding='UTF8') as single
     total_data.writerow(['Spot', 'max intensity', 'time'])
     for j in range(len(time_total)):
         total_data.writerow([alphabet[j], inten_total[j], time_total[j]])
+
+# %%
