@@ -43,7 +43,7 @@ for file in files:
             
 #print(inten_total)
 #print(len(inten_total))
-with open(path+'example.csv', mode = 'w', newline='', encoding='UTF8') as single_data_writer:
+with open(path+folder[0:-1]+'.csv', mode = 'w', newline='', encoding='UTF8') as single_data_writer:
     total_data = csv.writer(single_data_writer, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
     total_data.writerow(['Spot', 'max intensity', 'time'])
     for j in range(len(time_total)):
