@@ -2,17 +2,26 @@
 import os
 import matplotlib.pyplot as plt
 import csv
+import re
 
 intensity = []
 time = []
 inten_total = []
 time_total = []
 alphabet = []
+
+def atoi(text):
+    return int(text) if text.isdigit() else text
+
+def natural_keys(text):
+    return [atoi(c) for c in re.split(r'(\d+)', text)]
+
 i = 0
 path = 'C:/Users/nosquest17/Desktop/Sujong/daily_works/20200707_GC_v2_Red_ink_flatness/'
 folder = '20200706_Red_Ink_1/'
 
 files = os.listdir(path+folder)
+files.sort(key=natural_keys)
 
 for file in files:
     #print(file)
