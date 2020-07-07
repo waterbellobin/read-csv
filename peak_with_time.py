@@ -18,7 +18,7 @@ def natural_keys(text):
 
 i = 0
 path = 'C:/Users/nosquest17/Desktop/Sujong/daily_works/20200707_GC_v2_Red_ink_flatness/'
-folder = '20200706_Red_Ink_1/'
+folder = '20200706_Red_Ink_7/'
 
 files = os.listdir(path+folder)
 files.sort(key=natural_keys)
