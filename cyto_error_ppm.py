@@ -25,11 +25,11 @@ def natural_keys(text):
 
 i = 0
 path = 'C:/Users/nosquest17/Desktop/Sujong/daily_works/'
-folder = '20200626_GC_v1_cyto_test/GC_v1_200626_cyto_3/'
+folder = '20200708_GC_v2_Cyto_error/20200707_Cyto_2/'
 files = os.listdir(path+folder)
 files.sort(key=natural_keys)
 
-save_csv = 0
+save_csv = 1
 
 for file in files:
     #print(file)
