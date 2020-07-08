@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import csv
 import numpy as np
 
-cyto3_ref = 4120.7467
+cyto3_ref = 4120.0800
 cyto2_ref = 6180.6200
 cyto1_ref = 12360.2400
 
