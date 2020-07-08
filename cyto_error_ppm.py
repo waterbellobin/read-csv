@@ -6,8 +6,8 @@ import csv
 import numpy as np
 
 cyto3_ref = 3637.8000
-cyto2_ref = 4364.9200
-cyto1_ref = 5381.4000
+cyto2_ref = 6180.6200
+cyto1_ref = 12360.2400
 
 cyto3, cyto2, cyto1 = \
     ['cyto 3'],['cyto 2'],['cyto 1']
