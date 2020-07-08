@@ -25,7 +25,7 @@ def natural_keys(text):
 
 i = 0
 path = 'C:/Users/nosquest17/Desktop/Sujong/daily_works/'
-folder = '20200708_GC_v2_Cyto_error_2_circular_spot/20200708_Cyto_1/'
+folder = '20200708_GC_v2_Cyto_error_2_circular_spot/20200708_Cyto_10/'
 files = os.listdir(path+folder)
 files.sort(key=natural_keys)
 
