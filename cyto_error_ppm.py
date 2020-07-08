@@ -64,9 +64,9 @@ for file in files:
     print(file[index_1+1:index_2])
     alphabet.append(file[index_1+1:index_2])
 
-    cyto3.append(cyto1_err/cyto3_ref*1000000)
+    cyto3.append(cyto3_err/cyto3_ref*1000000)
     cyto2.append(cyto2_err/cyto2_ref*1000000)
-    cyto1.append(cyto3_err/cyto1_ref*1000000)
+    cyto1.append(cyto1_err/cyto1_ref*1000000)
     
     print('')
 
