@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import csv
 import numpy as np
 
-cyto3_ref = 4120.0800
+cyto3_ref = 4120.7467
 cyto2_ref = 6180.6200
 cyto1_ref = 12360.2400
 
@@ -77,7 +77,7 @@ print(folder[0:file_index_1+1])
 print(folder[file_index_1+1:file_index_2])
 
 if save_csv == True:
-    with open(path+folder[0:file_index_1+1]+folder[file_index_1+1:file_index_2]+'.csv', mode = 'w', newline='', encoding='UTF8') as single_data_writer:
+    with open(path+folder[0:file_index_1+1]+folder[file_index_1+1:file_index_2]+'_edit.csv', mode = 'w', newline='', encoding='UTF8') as single_data_writer:
         total_data = csv.writer(single_data_writer, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
         total_data.writerow(alphabet)
         total_data.writerow(cyto3)
